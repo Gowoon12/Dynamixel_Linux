@@ -62,21 +62,21 @@ self.motorType = [2.0, 2.0, 2.0, 2.0] # This means the protocol type.
 
  * How to check the Device name?
    
-      disconnent the USB port on your computer.
+        disconnent the USB port on your computer.
 
-      cd ..
+        cd ..
 
-      cd ..
+        cd ..
 
-      cd dev
+        cd dev
 
-      ls
+        ls
 
-      Connect the USB port on your computer.
+        Connect the USB port on your computer.
 
-      ls
+        ls
 
-      # One port name will come out and that is the DEVICE NAME
+        One port name will come out and that is the DEVICE NAME
    
 
    
