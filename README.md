@@ -26,7 +26,7 @@ If you are using U2D2 and its powerhub, please connect the hardware following th
 + If you encounter an error stating that Dynamixel SDK cannot be found when running a Python code, you can try resolving it by entering the following command in the terminal.
 
 
-    pip install dynamixel-sdk
+      pip install dynamixel-sdk
 
 
 
