@@ -1,10 +1,10 @@
 # Dynamixel_Linux
 
-This is the guide on how to use Robotis Dynamixel motors in a Linux environment using Dynamixel SDK. 
++ This is the guide on how to use Robotis Dynamixel motors in a Linux environment using Dynamixel SDK. 
 
-The code is written in Python. You can use it on its own or intergrated with ROS(Robot Operating System).
++ The code is written in Python. You can use it on its own or intergrated with ROS(Robot Operating System).
 
-If you want to use it in a Windows environment or in other platform, please refer to the explanations [here](https://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_sdk/overview/). 
++ If you want to use it in a Windows environment or in other platform, please refer to the explanations [here](https://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_sdk/overview/). 
 
 
 
@@ -21,9 +21,9 @@ If you are using U2D2 and its powerhub, please connect the hardware following th
 
 ## Dynamixel SDK Installation
 
-You can install the Dynamixel SDK with carefully following the instruction [here](https://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_sdk/download/#repository). 
++ You can install the Dynamixel SDK with carefully following the instruction [here](https://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_sdk/download/#repository). 
 
-If you encounter an error stating that Dynamixel SDK cannot be found when running a Python code, you can try resolving it by entering the following command in the terminal.
++ If you encounter an error stating that Dynamixel SDK cannot be found when running a Python code, you can try resolving it by entering the following command in the terminal.
 
     pip install dynamixel-sdk
 
