@@ -53,22 +53,32 @@ Before you use the code, please check the control table address. Each motor has 
 Example : Assume that you are goint to use 4 motor, 
 Only you need to do is..
 
+
 BAUDRATE = 57600  # Change the boardrate as you set
+
 DEVICENAME = "dev/ttyUSB0"
+
 self.motorN0 = 4
+
 self.IDs = [1, 2, 3, 4] # This will change with your setup by using the Dyanmixel Wizard. 
+
 self.motorType = [2.0, 2.0, 2.0, 2.0] # This means the protocol type. 
+
 
 
  * How to check the Device name?
    
    disconnent the USB port on your computer.
+   
         cd ..
         cd ..
         cd dev
         ls
+   
    Connect the USB port on your computer.
+   
         ls
+   
    One port name will come out and that is the DEVICE NAME
    
 
