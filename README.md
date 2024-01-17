@@ -6,15 +6,16 @@
 
 + If you want to use it in a Windows environment or in other platform, please refer to the explanations [here](https://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_sdk/overview/). 
 
++ 
 
 
-## [Pre-requirement] Dynamixel Wizard 2.0
+## [Pre-requirement] Dynamixel Wizard 2.0 
 
-Robotiz provide the Dynamixel Wizard 2.0, a GUI software for configuring Dynamixel motors. 
++ Robotiz provide the Dynamixel Wizard 2.0, a GUI software for configuring Dynamixel motors. 
 
-You can download the software at the [Robotis website](https://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_wizard2/). 
++ You can download the software at the [Robotis website](https://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_wizard2/). 
 
-If you are using U2D2 and its powerhub, please connect the hardware following the instruction [here](https://emanual.robotis.com/docs/kr/parts/interface/u2d2_power_hub/#%EA%B0%9C%EC%9A%94). 
++ If you are using U2D2 and its powerhub, please connect the hardware following the instruction [here](https://emanual.robotis.com/docs/kr/parts/interface/u2d2_power_hub/#%EA%B0%9C%EC%9A%94). 
 
 ## Hardware Setup
 
@@ -27,6 +28,7 @@ If you are using U2D2 and its powerhub, please connect the hardware following th
 
 
       pip install dynamixel-sdk
+
 
 
 
