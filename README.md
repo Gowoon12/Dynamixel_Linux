@@ -6,7 +6,7 @@ The code is written in Python. You can use it on its own or intergrated with ROS
 
 If you want to use it in a Windows environment or in other platform, please refer to the explanations [here](https://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_sdk/overview/). 
 
-----
+
 
 ## [Pre-requirement] Dynamixel Wizard 2.0
 
@@ -25,7 +25,7 @@ You can install the Dynamixel SDK with carefully following the instruction [here
 
 If you encounter an error stating that Dynamixel SDK cannot be found when running a Python code, you can try resolving it by entering the following command in the terminal.
 
-pip install dynamixel-sdk;
+    pip install dynamixel-sdk;
 
 
 
