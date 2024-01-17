@@ -6,7 +6,7 @@
 
 + If you want to use it in a Windows environment or in other platform, please refer to the explanations [here](https://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_sdk/overview/). 
 
-+ 
++ The code is tested at the ubuntu 18.04, 20.04. 
 
 
 ## [Pre-requirement] Dynamixel Wizard 2.0 
