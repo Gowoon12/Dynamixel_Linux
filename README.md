@@ -71,11 +71,8 @@ self.motorType = [2.0, 2.0, 2.0, 2.0] # This means the protocol type.
        disconnent the USB port on your computer.
    
        cd ..
-   
        cd ..
-   
        cd dev
-   
        ls
    
        Connect the USB port on your computer.
