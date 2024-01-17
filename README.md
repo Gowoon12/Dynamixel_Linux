@@ -62,7 +62,7 @@ self.motorType = [2.0, 2.0, 2.0, 2.0] # This means the protocol type.
 
  * How to check the Device name?
    
-    # disconnent the USB port on your computer.
+    disconnent the USB port on your computer.
    
     cd ..
    
@@ -72,7 +72,7 @@ self.motorType = [2.0, 2.0, 2.0, 2.0] # This means the protocol type.
    
     ls
    
-    # Connect the USB port on your computer.
+    Connect the USB port on your computer.
    
     ls
    
