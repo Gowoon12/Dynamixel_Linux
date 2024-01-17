@@ -25,7 +25,7 @@ You can install the Dynamixel SDK with carefully following the instruction [here
 
 If you encounter an error stating that Dynamixel SDK cannot be found when running a Python code, you can try resolving it by entering the following command in the terminal.
 
-    pip install dynamixel-sdk;
+    pip install dynamixel-sdk
 
 
 
