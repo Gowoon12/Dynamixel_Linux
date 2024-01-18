@@ -82,7 +82,14 @@ self.motorType = [2.0, 2.0, 2.0, 2.0] # This means the protocol type.
 
 + This is the example code to control the Dynamixel motor. 
 
-+ This include keyboard input control. when you press each keyboard(ASCII code), the motor will move as it defined. 
++ This include keyboard input control. when you press each keyboard(ASCII code), the motor will move as it defined. ESC key will make it exit. 
 
-+ You can change this code for your system. 
++ You can change this code for your system.
+
+Go to the folder include this file, and try 
+
+    python example.py
+
+
+    
    
