@@ -77,7 +77,12 @@ self.motorType = [2.0, 2.0, 2.0, 2.0] # This means the protocol type.
        ls
    
        => One port name will come out and that is the DEVICE NAME
-   
 
-   
+### example.py
+
++ This is the example code to control the Dynamixel motor. 
+
++ This include keyboard input control. when you press each keyboard(ASCII code), the motor will move as it defined. 
+
++ You can change this code for your system. 
    
