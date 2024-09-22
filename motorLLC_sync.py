@@ -43,7 +43,7 @@ LEN_AXMX_MOVING              = 1
 AXMX_PROTOCOL_VERSION        = 1.0               # See which protocol version is used in the Dynamixel
 
 # Default setting
-BAUDRATE                    = 57600            # Dynamixel default baudrate : 57600
+BAUDRATE                    = 1000000            # Dynamixel default baudrate : 57600
 DEVICENAME                  = "/dev/ttyUSB0"            # Check which port is being used on your controller
                                                 # ex) Windows: "COM1"   Linux: "/dev/ttyUSB0" Mac: "/dev/tty.usbserial-*"
 TORQUE_ENABLE               = 1                 # Value for enabling the torque
@@ -53,9 +53,9 @@ TYPE_AXMX_P1                = 1.0
 
 class motorLLC():
     def __init__(self):
-        self.motorNo = 4
-        self.IDs = [1, 2, 3,4]
-        self.motorType = [2.0, 2.0, 2.0, 2.0]
+        self.motorNo = 2
+        self.IDs = [1, 2]
+        self.motorType = [2.0, 2.0]
         self.baudrate = BAUDRATE
         self.device = DEVICENAME
 
@@ -311,47 +311,36 @@ class motorLLC():
             # Clear syncwrite parameter storage
             self.groupSyncWriteP1_posvel.clearParam()
 
-    def readPos(self):
-        # Syncread present position
-        #if self.type_AXMX_P1_used:
-        #    dxl_comm_result = self.groupBulkReadP1_pos.txRxPacket()
-        #    if dxl_comm_result != COMM_SUCCESS:
-        #        print("%s - Ln319" % self.packetHandlerP1.getTxRxResult(dxl_comm_result))
+    def read_position(self):
+        dxl_present_position = []
 
         if self.type_PRO_P2_used:
             dxl_comm_result = self.groupBulkReadP2_pos.txRxPacket()
             if dxl_comm_result != COMM_SUCCESS:
-                print("%s - Ln324" % self.packetHandlerP2.getTxRxResult(dxl_comm_result))
+                print("%s" % self.packetHandlerP2.getTxRxResult(dxl_comm_result))
 
-        dxl_present_pos = []
-        for ii in range(0, self.motorNo):
-            motorID = self.IDs[ii]
-            if self.motorType[ii] == TYPE_PRO_P2:
-                # Check if groupbulkread data of Dynamixel is available
-                dxl_getdata_result = self.groupBulkReadP2_pos.isAvailable(motorID, ADDR_PRO_PRESENT_POS, LEN_PRO_PRESENT_POS)
-                if dxl_getdata_result != True:
-                    print("[ID:%03d] groupSyncRead getdata failed - Ln333" % motorID)
-                    quit()
-                # Get Dynamixel present position value
-                dxl_present_pos.append(self.groupBulkReadP2_pos.getData(motorID, ADDR_PRO_PRESENT_POS, LEN_PRO_PRESENT_POS))
+            for ii in range(0, self.motorNo):
+                motorID = self.IDs[ii]
+                if self.motorType[ii] == TYPE_PRO_P2:
+                    dxl_getdata_result = self.groupBulkReadP2_pos.isAvailable(motorID, ADDR_PRO_PRESENT_POS, LEN_PRO_PRESENT_POS)
+                    if dxl_getdata_result:
+                        pos = self.groupBulkReadP2_pos.getData(motorID, ADDR_PRO_PRESENT_POS, LEN_PRO_PRESENT_POS)
+                        dxl_present_position.append(pos)
 
-            else:   #if self.motorType[ii] == TYPE_AXMX_P1:
-                p_pos, dxl_comm_result, dxl_error = self.packetHandlerP1.read2ByteTxRx(self.portHandler, motorID,
-                                                                                                ADDR_AXMX_PRESENT_POS)
-                if dxl_comm_result != COMM_SUCCESS:
-                    print("%s" % self.packetHandlerP1.getTxRxResult(dxl_comm_result))
-                elif dxl_error != 0:
-                    print("%s" % self.packetHandlerP1.getRxPacketError(dxl_error))
-                dxl_present_pos.append(p_pos)
-                # Check if groupbulkread data of Dynamixel is available
-                #dxl_getdata_result = self.groupBulkReadP1_pos.isAvailable(motorID, ADDR_AXMX_PRESENT_POS, LEN_AXMX_PRESENT_POS)
-                #if dxl_getdata_result != True:
-                #    print("[ID:%03d] groupSyncRead getdata failed - Ln342" % motorID)
-                #    quit()
-                # Get Dynamixel present position value
+        if self.type_AXMX_P1_used:
+            for ii in range(0, self.motorNo):
+                motorID = self.IDs[ii]
+                if self.motorType[ii] == TYPE_AXMX_P1:
+                    pos, dxl_comm_result, dxl_error = self.packetHandlerP1.read2ByteTxRx(self.portHandler, motorID, ADDR_AXMX_PRESENT_POS)
+                    if dxl_comm_result != COMM_SUCCESS:
+                        print("%s" % self.packetHandlerP1.getTxRxResult(dxl_comm_result))
+                    elif dxl_error != 0:
+                        print("%s" % self.packetHandlerP1.getRxPacketError(dxl_error))
+                    else:
+                        dxl_present_position.append(pos)
+                        
+        return dxl_present_position
 
-                #dxl_present_pos.append(self.groupBulkReadP1_pos.getData(motorID, ADDR_AXMX_PRESENT_POS, LEN_AXMX_PRESENT_POS))
-        return dxl_present_pos
 
     def readMoving(self):
         # Syncread present position
