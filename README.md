@@ -1,5 +1,9 @@
 # Dynamixel_Linux
 
++ This project was developed at the Medical Robotics and Intelligent Control Laboratory (MeRIC-LAB), Department of Mechanical Engineering, Chonnam National University. 
+  
++ It serves as a tutorial for using Dynamixel motors on Linux and has been made available for MeRIC-LAB students as well as undergraduate capstone design students in mechanical engineering. 
+
 + This is the guide on how to use Robotis Dynamixel motors in a Linux environment using Dynamixel SDK. 
 
 + The code is written in Python. You can use it on its own or intergrated with ROS(Robot Operating System).
