@@ -1,29 +1,32 @@
 import os
 from motorLLC_sync import *
-#import numpy as np
-from dynamixel_sdk import * # Uses Dynamixel SDK library. If this make error, you can try with 'pip install dynamixel-sdk' on the terminal. 
+from dynamixel_sdk import *
 
 if os.name == 'nt':
     import msvcrt
+
     def getch():
         return msvcrt.getch().decode()
+
 else:
-    import sys, tty, termios
+    import sys
+    import tty
+    import termios
+
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
+
     def getch():
         try:
             tty.setraw(sys.stdin.fileno())
             ch = sys.stdin.read(1)
         finally:
             termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+
         return ch
 
 
-MIN_POS_V  = 100               # Dynamixel will rotate between this value
-MAX_POS_V  = 2000              # and this value (note that the Dynamixel would not move when the position value is out of movable range. Check e-manual about the range of the Dynamixel you use.)
-MOVING_STATUS_THRESHOLD = 100               # Dynamixel moving status threshold
-
+# Motor settings
 motorNo = 4
 motorIDs = [1, 2, 3, 4]
 motorType = [2.0, 2.0, 2.0, 2.0]
@@ -33,6 +36,7 @@ mc.set_motor_IDs(motorNo, motorIDs, motorType)
 mc.open()
 mc.torque_enable()
 
+# Position settings
 pos0 = [2000, 1050, 1800, 1650]
 
 pos1_1 = [2500, 1050, 1800, 1650]
@@ -47,40 +51,58 @@ pos3_2 = [2000, 1050, 1400, 1650]
 pos4_1 = [2000, 1050, 1800, 1900]
 pos4_2 = [2000, 1050, 1800, 1400]
 
+print(
+    "\n"
+    "o : ORIGIN\n"
+    "q : M1 up / w : M1 down\n"
+    "e : M2 up / r : M2 down\n"
+    "a : M3 up / s : M3 down\n"
+    "d : M4 up / f : M4 down\n"
+    "ESC : quit\n"
+)
 
-while 1:
-    print(" o : ORIGIN \n t : M1 up / w : M1 down \n e : M2 up / r : M2 down \n a : M3 up / s : M3 down \n d : M4 up / f : M4 down \n esc : quit")
-    
-    if getch() == chr(0x6F): # o : origin
+while True:
+
+    key = getch()
+
+    if key == 'o':
         mc.moveTo(pos0)
-        
-    if getch() == chr(0x71): # q : M1 up
+        print("o : ORIGIN")
+
+    elif key == 'q':
         mc.moveTo(pos1_1)
         print("q : M1 up")
-    if getch() == chr(0x77): # w : M1 down
+
+    elif key == 'w':
         mc.moveTo(pos1_2)
         print("w : M1 down")
-    if getch() == chr(0x65): # e : M2 up
+
+    elif key == 'e':
         mc.moveTo(pos2_1)
         print("e : M2 up")
-    if getch() == chr(0x72): # r : M2 down
-        mc.moveTo(pos2_2)  
-        rint("r : M2 down")          
-    if getch() == chr(0x61): # a : M3 up
+
+    elif key == 'r':
+        mc.moveTo(pos2_2)
+        print("r : M2 down")
+
+    elif key == 'a':
         mc.moveTo(pos3_1)
         print("a : M3 up")
-    if getch() == chr(0x73): # s : M3 down
+
+    elif key == 's':
         mc.moveTo(pos3_2)
         print("s : M3 down")
-    if getch() == chr(0x64): # d : M4 up
+
+    elif key == 'd':
         mc.moveTo(pos4_1)
         print("d : M4 up")
-    if getch() == chr(0x66): # f : M4 down
-        mc.moveTo(pos4_2)
-        print("f : M4 down")    
 
-    if getch() == chr(0x1b):
+    elif key == 'f':
+        mc.moveTo(pos4_2)
+        print("f : M4 down")
+
+    elif key == chr(0x1b):
+        print("Quit")
         break
-        
-                
+
 mc.close()
